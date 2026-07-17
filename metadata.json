@@ -1,0 +1,6 @@
+{
+  "name": "Aegis - Sites e Sistemas de Elite",
+  "description": "Plataforma de tecnologia de altíssimo padrão especializada no desenvolvimento de Sites Institucionais Premium, Softwares Customizados, ERP/CRM e Automação de Processos para o Amplo Mercado Corporativo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

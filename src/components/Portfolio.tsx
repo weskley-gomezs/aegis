@@ -18,7 +18,7 @@ export default function Portfolio() {
       category: "CRM & Vendas",
       description: "Plataforma avançada de relacionamento e CRM. Unifica canais de vendas, funis dinâmicos de conversão, automação de tarefas comerciais e relatórios analíticos integrados para acelerar resultados de equipes comerciais.",
       imageSrc: "https://i.imgur.com/NwRgPRA.png",
-      projectLink: "https://i.imgur.com/NwRgPRA.png",
+      projectLink: "https://sistenext.vercel.app/",
       features: [
         "Gestão visual de funis de vendas com arrastar-e-soltar e automações associadas",
         "Disparos automáticos e controle de conversas integradas para aumento de conversão",

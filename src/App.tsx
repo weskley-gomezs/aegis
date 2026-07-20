@@ -11,6 +11,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import AboutMe from "./components/AboutMe";
 import WhyUs from "./components/WhyUs";
 import Solutions from "./components/Solutions";
 import ProblemsSolved from "./components/ProblemsSolved";
@@ -75,6 +76,9 @@ export default function App() {
       <main>
         {/* Hero Section */}
         <Hero onOpenDiagnosis={() => setIsDiagnosisOpen(true)} />
+
+        {/* About the Founder Section */}
+        <AboutMe />
 
         {/* Why Choose Us Section */}
         <WhyUs />

@@ -11,30 +11,19 @@ import { Testimonial } from "../types";
 export default function Testimonials() {
   const testimonials: Testimonial[] = [
     {
-      id: "alencar",
-      name: "Dr. Roberto Alencar",
-      role: "Diretor de Operações",
-      companyName: "Vanguard Logística",
-      text: "O sistema customizado da Aegis transformou nossa operação de forma inacreditável. Nossos motoristas e clientes agora assinam e acompanham ordens de serviço pelo celular em tempo real. Reduzimos o tempo de faturamento em 42% no primeiro mês letivo e zeramos falhas de preenchimento.",
-      avatarSrc: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120&h=120",
+      id: "colegio-reacao",
+      name: "Diretoria Pedagógica",
+      role: "Gestão Acadêmica",
+      companyName: "Colégio Reação",
+      text: "A Aegis desenvolveu não apenas o nosso site institucional, mas um ecossistema completo de gestão. Hoje controlamos desde ordens de serviço e chamados técnicos até a gestão de funcionários e inventário de equipamentos. A plataforma unificou processos que antes eram dispersos, trazendo uma eficiência operacional que nunca tivemos.",
       rating: 5
     },
     {
-      id: "mariana",
-      name: "Dra. Mariana Souza",
-      role: "CMO & Sócia-Diretora",
-      companyName: "Nexus Incorporações",
-      text: "Nosso novo portal institucional premium reposicionou nossa marca no mercado de alto padrão. O design é impecável e passa uma autoridade incrível. No primeiro semestre letivo pós-lançamento, tivemos um aumento de 54% nas leads altamente qualificadas vindas do site.",
-      avatarSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=120&h=120",
-      rating: 5
-    },
-    {
-      id: "ricardo",
-      name: "Eng. Ricardo Mendes",
-      role: "CTO & Co-fundador",
-      companyName: "FinTech Vanguarda",
-      text: "Tínhamos receio de contratar plataformas prontas porque nossas regras de faturamento e conciliação são altamente complexas. A Aegis desenhou um software sob medida integrado à nossa API contábil que funciona com 100% de estabilidade e agilidade operacional.",
-      avatarSrc: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120&h=120",
+      id: "dl-magic-paper",
+      name: "Proprietário",
+      role: "Direção Geral",
+      companyName: "DL MAGIC PAPER",
+      text: "Nosso site estilo catálogo transformou a forma como apresentamos nossos produtos. O painel administrativo é extremamente intuitivo, permitindo que nossa equipe atualize o estoque e as coleções em tempo real. É a ferramenta perfeita para quem busca profissionalismo e agilidade nas vendas digitais.",
       rating: 5
     }
   ];
@@ -55,15 +44,15 @@ export default function Testimonials() {
             DEPOIMENTOS REAIS
           </span>
           <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Aprovado por diretores e <span className="font-serif italic text-neon-green font-light">líderes do mercado</span>
+            Cases que confiam na <span className="font-serif italic text-neon-green font-light">nossa engenharia</span>
           </h2>
           <p className="mt-4 text-base text-gray-400">
-            A melhor resposta para a qualidade da nossa engenharia é a satisfação e os excelentes resultados comerciais das empresas parceiras que utilizam nossas plataformas diariamente.
+            Mais do que clientes, construímos parcerias de longo prazo baseadas em tecnologia de ponta e resultados práticos para o dia a dia da sua empresa.
           </p>
         </div>
 
         {/* Testimonials Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="testimonials-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="testimonials-grid">
           {testimonials.map((test, index) => (
             <motion.div
               key={test.id}
@@ -95,12 +84,9 @@ export default function Testimonials() {
 
               {/* Author Info */}
               <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-4">
-                <img
-                  src={test.avatarSrc}
-                  alt={test.name}
-                  referrerPolicy="no-referrer"
-                  className="h-12 w-12 rounded-full object-cover border border-white/10"
-                />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/5 text-neon-green border border-white/10">
+                  <Building className="h-6 w-6" />
+                </div>
                 <div>
                   <h4 className="font-sans text-sm font-bold text-white">
                     {test.name}
@@ -108,8 +94,7 @@ export default function Testimonials() {
                   <p className="text-xs text-gray-400">
                     {test.role}
                   </p>
-                  <div className="mt-1 flex items-center gap-1 text-[10px] text-neon-green font-mono uppercase tracking-wider">
-                    <Building className="h-3 w-3 shrink-0" />
+                  <div className="mt-1 flex items-center gap-1 text-[10px] text-neon-green font-mono uppercase tracking-wider font-bold">
                     <span>{test.companyName}</span>
                   </div>
                 </div>

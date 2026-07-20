@@ -95,6 +95,14 @@ export default function Footer({ onOpenDiagnosis }: FooterProps) {
               </li>
               <li>
                 <button 
+                  onClick={() => handleScrollTo("about")}
+                  className="text-gray-400 hover:text-neon-green transition-colors text-left"
+                >
+                  Sobre
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => handleScrollTo("solutions")}
                   className="text-gray-400 hover:text-neon-green transition-colors text-left"
                 >

@@ -25,6 +25,7 @@ export default function Header({ onOpenDiagnosis }: HeaderProps) {
 
   const menuItems = [
     { label: "Início", targetId: "hero" },
+    { label: "Sobre", targetId: "about" },
     { label: "Soluções", targetId: "solutions" },
     { label: "Portfólio", targetId: "portfolio" },
     { label: "Como Trabalhamos", targetId: "method" },

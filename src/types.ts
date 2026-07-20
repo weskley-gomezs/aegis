@@ -57,7 +57,7 @@ export interface Testimonial {
   role: string;
   companyName: string;
   text: string;
-  avatarSrc: string;
+  avatarSrc?: string;
   rating: number;
 }
 

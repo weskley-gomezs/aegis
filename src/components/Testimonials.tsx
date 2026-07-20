@@ -16,6 +16,7 @@ export default function Testimonials() {
       role: "Gestão Acadêmica",
       companyName: "Colégio Reação",
       text: "A Aegis desenvolveu não apenas o nosso site institucional, mas um ecossistema completo de gestão. Hoje controlamos desde ordens de serviço e chamados técnicos até a gestão de funcionários e inventário de equipamentos. A plataforma unificou processos que antes eram dispersos, trazendo uma eficiência operacional que nunca tivemos.",
+      avatarSrc: "https://i.imgur.com/PYyzTAK.png",
       rating: 5
     },
     {
@@ -24,6 +25,7 @@ export default function Testimonials() {
       role: "Direção Geral",
       companyName: "DL MAGIC PAPER",
       text: "Nosso site estilo catálogo transformou a forma como apresentamos nossos produtos. O painel administrativo é extremamente intuitivo, permitindo que nossa equipe atualize o estoque e as coleções em tempo real. É a ferramenta perfeita para quem busca profissionalismo e agilidade nas vendas digitais.",
+      avatarSrc: "https://i.imgur.com/fVtEcdv.png",
       rating: 5
     }
   ];
@@ -84,8 +86,17 @@ export default function Testimonials() {
 
               {/* Author Info */}
               <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/5 text-neon-green border border-white/10">
-                  <Building className="h-6 w-6" />
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/5 text-neon-green border border-white/10 overflow-hidden">
+                  {test.avatarSrc ? (
+                    <img 
+                      src={test.avatarSrc} 
+                      alt={test.companyName} 
+                      referrerPolicy="no-referrer"
+                      className="h-full w-full object-contain p-2"
+                    />
+                  ) : (
+                    <Building className="h-6 w-6" />
+                  )}
                 </div>
                 <div>
                   <h4 className="font-sans text-sm font-bold text-white">

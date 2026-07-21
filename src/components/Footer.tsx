@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Mail, Phone, MapPin, Instagram, Sparkles, Shield, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Linkedin, Sparkles, Shield, ArrowUpRight } from "lucide-react";
 
 interface FooterProps {
   onOpenDiagnosis: () => void;
@@ -58,6 +58,16 @@ export default function Footer({ onOpenDiagnosis }: FooterProps) {
             </p>
 
             <div className="flex items-center gap-4">
+              <a 
+                href="https://www.linkedin.com/in/weskley-gomes-250825308/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 hover:border-neon-green/40 hover:text-neon-green transition-all duration-300"
+                aria-label="LinkedIn link"
+                id="footer-social-linkedin"
+              >
+                <Linkedin className="h-4.5 w-4.5" />
+              </a>
               <a 
                 href="https://www.instagram.com/weskley_gomezs/" 
                 target="_blank" 

@@ -5,7 +5,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { Code2, Target, Lightbulb, CheckCircle2 } from "lucide-react";
+import { Code2, Target, Lightbulb, CheckCircle2, Linkedin } from "lucide-react";
 
 export default function AboutMe() {
   const pillars = [
@@ -52,9 +52,21 @@ export default function AboutMe() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               
               {/* Floating Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10">
-                <span className="font-mono text-[10px] text-neon-green font-bold uppercase tracking-[0.2em] block mb-1">FUNDADOR & CTO</span>
-                <h3 className="font-sans text-xl font-bold text-white">Weskley Gomes</h3>
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 flex justify-between items-center">
+                <div>
+                  <span className="font-mono text-[10px] text-neon-green font-bold uppercase tracking-[0.2em] block mb-1">FUNDADOR & CTO</span>
+                  <h3 className="font-sans text-lg font-bold text-white">Weskley Gomes</h3>
+                </div>
+                <a 
+                  href="https://www.linkedin.com/in/weskley-gomes-250825308/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-white hover:border-neon-green hover:text-neon-green transition-all duration-300"
+                  title="Conectar no LinkedIn"
+                  id="about-social-linkedin"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
               </div>
             </div>
 

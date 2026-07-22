@@ -32,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <section 
-      className="relative py-24 bg-[#050505] overflow-hidden border-t border-white/5" 
+      className="relative py-24 bg-white overflow-hidden border-t border-gray-200" 
       id="testimonials"
     >
       {/* Visual background accents */}
@@ -45,10 +45,10 @@ export default function Testimonials() {
           <span className="font-mono text-xs uppercase tracking-widest text-neon-green font-bold block mb-4">
             DEPOIMENTOS REAIS
           </span>
-          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
             Cases que confiam na <span className="font-serif italic text-neon-green font-light">nossa engenharia</span>
           </h2>
-          <p className="mt-4 text-base text-gray-400">
+          <p className="mt-4 text-base text-gray-600">
             Mais do que clientes, construímos parcerias de longo prazo baseadas em tecnologia de ponta e resultados práticos para o dia a dia da sua empresa.
           </p>
         </div>
@@ -58,15 +58,15 @@ export default function Testimonials() {
           {testimonials.map((test, index) => (
             <motion.div
               key={test.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 25 , filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0 , filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-3xl border border-white/5 bg-white/[0.01] p-8 hover:border-neon-green/20 hover:bg-white/[0.02] transition-all duration-300 flex flex-col justify-between"
+              className="group relative rounded-3xl border border-gray-200 bg-gray-50 p-8 card-premium hover:border-neon-green/20 hover:bg-white transition-all btn-premium duration-300 flex flex-col justify-between"
               id={`testimonial-card-${test.id}`}
             >
               {/* Quote Mark Icon */}
-              <div className="absolute top-6 right-8 text-white/[0.02] group-hover:text-neon-green/[0.02] transition-colors pointer-events-none">
+              <div className="absolute top-6 right-8 text-gray-200 group-hover:text-neon-green/[0.02] transition-colors pointer-events-none">
                 <Quote className="h-16 w-16 stroke-[1.5]" />
               </div>
 
@@ -79,14 +79,14 @@ export default function Testimonials() {
                 </div>
 
                 {/* Testimonial Quote */}
-                <p className="text-sm text-gray-300 leading-relaxed italic relative">
+                <p className="text-sm text-gray-700 leading-relaxed italic relative">
                   "{test.text}"
                 </p>
               </div>
 
               {/* Author Info */}
-              <div className="mt-8 pt-6 border-t border-white/5 flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/5 text-neon-green border border-white/10 overflow-hidden">
+              <div className="mt-8 pt-6 border-t border-gray-200 flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-neon-green border border-gray-200 overflow-hidden">
                   {test.avatarSrc ? (
                     <img 
                       src={test.avatarSrc} 
@@ -99,10 +99,10 @@ export default function Testimonials() {
                   )}
                 </div>
                 <div>
-                  <h4 className="font-sans text-sm font-bold text-white">
+                  <h4 className="font-sans text-sm font-bold text-gray-900">
                     {test.name}
                   </h4>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-600">
                     {test.role}
                   </p>
                   <div className="mt-1 flex items-center gap-1 text-[10px] text-neon-green font-mono uppercase tracking-wider font-bold">

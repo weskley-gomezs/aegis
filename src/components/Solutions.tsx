@@ -18,7 +18,7 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
       title: "Site Institucional Premium",
       subtitle: "A vitrine digital de elite da sua marca",
       description: "Mais do que um site bonito: uma plataforma institucional de carregamento instantâneo, projetada com técnicas avançadas de copywriting e SEO para atrair leads qualificados e posicionar sua empresa como líder incontestável de mercado.",
-      icon: <Globe className="h-6 w-6 text-neon-green" />,
+      icon: <Globe className="h-6 w-6 text-neon-green icon-interact" />,
       bullets: [
         "Design 100% exclusivo, moderno e focado em alta conversão de leads",
         "Totalmente responsivo: navegação perfeita em celulares, tablets e computadores",
@@ -34,7 +34,7 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
       title: "Sistemas & SaaS Customizados",
       subtitle: "Sua operação operando em perfeita sincronia",
       description: "Desenvolvimento de softwares proprietários (CRMs, ERPs, Portais) desenhados especificamente para suprir as lacunas de sistemas engessados. Centralizamos e escalamos sua gestão sem taxas abusivas por usuário.",
-      icon: <Cpu className="h-6 w-6 text-neon-green" />,
+      icon: <Cpu className="h-6 w-6 text-neon-green icon-interact" />,
       bullets: [
         "Sistemas Web modernos, responsivos e escaláveis hospedados em nuvem",
         "Portais do Cliente de autoatendimento, onboarding e contratos",
@@ -50,7 +50,7 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
       title: "Automação de Processos & WhatsApp Hub",
       subtitle: "Liberte sua equipe do trabalho manual repetitivo",
       description: "Integração de fluxos inteligentes e robôs de conversação que otimizam o suporte, eliminam erros de preenchimento manual e garantem que nenhum cliente ou lead fique sem retorno imediato.",
-      icon: <Network className="h-6 w-6 text-neon-green" />,
+      icon: <Network className="h-6 w-6 text-neon-green icon-interact" />,
       bullets: [
         "WhatsApp CRM integrado com múltiplos agentes e distribuição inteligente de leads",
         "Cobranças automáticas via WhatsApp e e-mail integradas ao Pix e Boleto",
@@ -65,7 +65,7 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
 
   return (
     <section 
-      className="relative py-24 bg-[#050505] overflow-hidden" 
+      className="relative py-24 bg-white overflow-hidden" 
       id="solutions"
     >
       {/* Background blur radial glow */}
@@ -79,10 +79,10 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
           <span className="font-mono text-xs uppercase tracking-widest text-neon-green font-bold block mb-4">
             NOSSAS SOLUÇÕES
           </span>
-          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
             Soluções digitais <span className="font-serif italic text-neon-green font-light">sob medida</span> para sua empresa
           </h2>
-          <p className="mt-4 text-base text-gray-400">
+          <p className="mt-4 text-base text-gray-600">
             Nossa equipe de engenharia desenvolve softwares de alto padrão estético e técnico. Unimos design de agência de elite com engenharia de software escalável de grande porte.
           </p>
         </div>
@@ -94,8 +94,8 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
             return (
               <motion.div
                 key={sol.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: isEven ? -40 : 40, scale: 0.95, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
                 className={`glass-premium rounded-[32px] p-8 md:p-12 relative overflow-hidden transition-all duration-300 hover:border-neon-green/20 ${
@@ -121,26 +121,26 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
                         </span>
                       </div>
 
-                      <h3 className="font-sans text-2xl font-bold tracking-tight text-white md:text-3xl">
+                      <h3 className="font-sans text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
                         {sol.title}
                       </h3>
                       
-                      <p className="mt-2 text-sm font-semibold text-gray-300 font-mono">
+                      <p className="mt-2 text-sm font-semibold text-gray-700 font-mono">
                         {sol.subtitle}
                       </p>
 
-                      <p className="mt-5 text-sm text-gray-400 leading-relaxed">
+                      <p className="mt-5 text-sm text-gray-600 leading-relaxed">
                         {sol.description}
                       </p>
                     </div>
 
-                    <div className="mt-8 pt-6 border-t border-white/5">
+                    <div className="mt-8 pt-6 border-t border-gray-200">
                       <button
                         onClick={onOpenDiagnosis}
-                        className="group flex items-center gap-2 rounded-xl bg-neon-green px-5 py-3 text-xs font-bold text-black shadow-[0_0_15px_rgba(198,255,56,0.2)] hover:bg-white hover:shadow-[0_0_25px_rgba(198,255,56,0.4)] transition-all duration-300"
+                        className="group flex items-center gap-2 rounded-xl bg-neon-green px-5 py-3 text-xs font-bold text-white shadow-md hover:bg-white  transition-all duration-300"
                         id={`btn-solution-cta-${sol.id}`}
                       >
-                        Agendar Diagnóstico Grátis
+                        Agendar Orçamento
                         <Sparkles className="h-3 w-3 text-black group-hover:scale-110 transition-transform" />
                       </button>
                     </div>
@@ -148,22 +148,41 @@ export default function Solutions({ onOpenDiagnosis }: SolutionsProps) {
 
                   {/* Right part: Features Checklist Grid */}
                   <div className="lg:col-span-7 flex flex-col justify-center">
-                    <div className="rounded-2xl border border-white/5 bg-[#000000]/20 p-6 md:p-8 space-y-4">
+                    <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 space-y-4">
                       <h4 className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
                         O que está incluso na entrega
                       </h4>
                       
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <motion.div 
+                        className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={{
+                          hidden: { opacity: 0 },
+                          visible: {
+                            opacity: 1,
+                            transition: {
+                              staggerChildren: 0.1
+                            }
+                          }
+                        }}
+                      >
                         {sol.bullets.map((bullet, idx) => (
-                          <div 
+                          <motion.div 
                             key={idx} 
-                            className="flex items-start gap-3 text-sm text-gray-300"
+                            variants={{
+                              hidden: { opacity: 0, y: 10 },
+                              visible: { opacity: 1, y: 0 }
+                            }}
+                            whileHover={{ scale: 1.02, x: 5 }}
+                            className="flex items-start gap-3 text-sm text-gray-700 bg-white p-3 rounded-lg border border-gray-100 shadow-sm transition-colors hover:border-neon-green/30"
                           >
                             <CheckCircle2 className="h-4 w-4 text-neon-green shrink-0 mt-0.5" />
                             <span className="leading-relaxed">{bullet}</span>
-                          </div>
+                          </motion.div>
                         ))}
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
 

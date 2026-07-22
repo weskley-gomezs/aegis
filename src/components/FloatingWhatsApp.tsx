@@ -60,12 +60,12 @@ export default function FloatingWhatsApp() {
         onClick={handleWhatsAppRedirect}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_0_20px_rgba(37,211,102,0.3)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] transition-all duration-300"
+        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-neon-green text-white shadow-[0_0_20px_rgba(198,255,56,0.3)] hover:shadow-[0_0_30px_rgba(198,255,56,0.6)] transition-all duration-300 active:scale-95"
         id="btn-whatsapp-floating"
         aria-label="Falar no WhatsApp"
       >
         {/* Glow effect */}
-        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 group-hover:scale-125 transition-transform duration-500 animate-ping pointer-events-none" />
+        <span className="absolute inset-0 rounded-full bg-neon-green opacity-30 group-hover:scale-125 transition-transform duration-500 animate-ping pointer-events-none" />
 
         {/* WhatsApp Vector Icon */}
         <svg

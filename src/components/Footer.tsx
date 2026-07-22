@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -28,7 +29,12 @@ export default function Footer({ onOpenDiagnosis }: FooterProps) {
   };
 
   return (
-    <footer className="relative bg-[#050505] pt-20 pb-12 border-t border-white/5" id="contact">
+    <motion.footer 
+      initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6 }}
+ className="relative bg-[#050505] pt-20 pb-12 border-t border-white/10" id="contact">
       
       {/* Absolute decorative glow bottom corners */}
       <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-neon-green/3 blur-3xl pointer-events-none" />
@@ -36,7 +42,7 @@ export default function Footer({ onOpenDiagnosis }: FooterProps) {
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 pb-16 border-b border-white/5">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 pb-16 border-b border-white/10">
           
           {/* Logo & Pitch Column (Col-span 4) */}
           <div className="lg:col-span-4 space-y-6">
@@ -228,6 +234,6 @@ export default function Footer({ onOpenDiagnosis }: FooterProps) {
         </div>
 
       </div>
-    </footer>
+    </motion.footer>
   );
 }

@@ -100,7 +100,7 @@ export default function Portfolio() {
 
   return (
     <section 
-      className="relative py-24 bg-[#050505] overflow-hidden" 
+      className="relative py-24 bg-white overflow-hidden" 
       id="portfolio"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
@@ -111,35 +111,45 @@ export default function Portfolio() {
             <span className="font-mono text-xs uppercase tracking-widest text-neon-green font-bold block mb-4">
               PORTFÓLIO DE PROJETOS DE ELITE
             </span>
-            <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="font-sans text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
               Nossa tecnologia em <span className="font-serif italic text-neon-green font-light">operação real</span>
             </h2>
-            <p className="mt-4 text-base text-gray-400">
+            <p className="mt-4 text-base text-gray-600">
               Conheça alguns dos ecossistemas digitais de alto nível desenvolvidos pela nossa equipe. Projetos que aliam requinte visual, engenharia segura e excelente retorno financeiro para as marcas.
             </p>
           </div>
 
-          <div className="shrink-0 flex items-center gap-2 font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-white/5 bg-white/[0.01] px-4 py-2 rounded-xl">
+          <div className="shrink-0 flex items-center gap-2 font-mono text-[10px] text-gray-500 uppercase tracking-widest border border-gray-200 bg-white/[0.01] px-4 py-2 rounded-xl">
             <span className="h-1.5 w-1.5 rounded-full bg-neon-green animate-pulse" />
             <span>RESULTADOS DE ALTA PERFORMANCE</span>
           </div>
         </div>
 
         {/* Big Premium Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+          id="portfolio-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+          }}
+        >
           {projects.map((proj) => (
             <motion.div
               key={proj.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-              className="group rounded-3xl border border-white/5 bg-white/[0.01] overflow-hidden hover:border-neon-green/30 hover:bg-white/[0.02] transition-all duration-300 flex flex-col justify-between"
+              variants={{
+                hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
+                visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+              }}
+              className="group rounded-3xl border border-gray-200 bg-white/[0.01] overflow-hidden hover:border-neon-green/30 hover:bg-white/[0.02] transition-all duration-300 flex flex-col justify-between"
               id={`portfolio-card-${proj.id}`}
             >
               <div>
                 {/* Image Wrap */}
-                <div className="relative aspect-video overflow-hidden border-b border-white/5 bg-black">
+                <div className="relative aspect-video overflow-hidden border-b border-gray-200 bg-black">
                   <img
                     src={proj.imageSrc}
                     alt={proj.title}
@@ -147,7 +157,7 @@ export default function Portfolio() {
                     className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95 group-hover:brightness-100"
                   />
                   {/* Subtle glass overlay tag */}
-                  <span className="absolute bottom-4 left-4 font-mono text-[10px] font-bold tracking-widest text-neon-green bg-[#050505]/80 backdrop-blur-md px-3 py-1 rounded-full border border-neon-green/20">
+                  <span className="absolute bottom-4 left-4 font-mono text-[10px] font-bold tracking-widest text-neon-green bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-neon-green/20">
                     {proj.category}
                   </span>
 
@@ -157,7 +167,7 @@ export default function Portfolio() {
                       href={proj.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg bg-black/60 text-white border border-white/10 hover:bg-neon-green hover:text-black hover:border-neon-green transition-all duration-300 opacity-0 group-hover:opacity-100"
+                      className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg bg-white/90 text-gray-900 border border-gray-200 hover:bg-neon-green hover:text-white hover:border-neon-green transition-all duration-300 opacity-0 group-hover:opacity-100"
                       title="Acessar demonstração / site"
                       onClick={(e) => e.stopPropagation()}
                     >
@@ -168,10 +178,10 @@ export default function Portfolio() {
 
                 {/* Info block */}
                 <div className="p-6 md:p-8 space-y-4">
-                  <h3 className="font-sans text-lg font-bold text-white tracking-tight leading-snug group-hover:text-neon-green transition-colors">
+                  <h3 className="font-sans text-lg font-bold text-gray-900 tracking-tight leading-snug group-hover:text-neon-green transition-colors">
                     {proj.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                     {proj.description}
                   </p>
                 </div>
@@ -181,7 +191,7 @@ export default function Portfolio() {
               <div className="p-6 md:p-8 pt-0 space-y-3">
                 <button
                   onClick={() => setSelectedProject(proj)}
-                  className="group/btn flex items-center justify-between w-full rounded-2xl border border-white/5 bg-white/5 px-5 py-4 text-xs font-bold text-white hover:border-neon-green/40 hover:bg-neon-green/5 transition-all duration-300"
+                  className="group/btn flex items-center justify-between w-full rounded-2xl border border-black bg-white px-5 py-4 text-xs font-bold text-black hover:border-neon-green/40 hover:bg-neon-green/5 transition-all duration-300"
                   id={`btn-portfolio-detail-${proj.id}`}
                 >
                   <span>Ver Detalhes Técnicos</span>
@@ -193,7 +203,7 @@ export default function Portfolio() {
                     href={proj.projectLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full rounded-2xl border border-neon-green/10 bg-neon-green/[0.02] px-5 py-3 text-xs font-bold text-neon-green hover:bg-neon-green hover:text-black hover:border-neon-green transition-all duration-300"
+                    className="flex items-center justify-center gap-2 w-full rounded-2xl border border-neon-green/10 bg-neon-green/[0.02] px-5 py-3 text-xs font-bold text-neon-green hover:bg-neon-green hover:text-white hover:border-neon-green transition-all duration-300"
                     id={`link-portfolio-visit-${proj.id}`}
                   >
                     <Globe className="h-3.5 w-3.5" />
@@ -204,7 +214,7 @@ export default function Portfolio() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
 
@@ -218,7 +228,7 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/90 backdrop-blur-md"
+              className="absolute inset-0 bg-white/80 backdrop-blur-md"
               id="spec-modal-overlay"
             />
 
@@ -227,13 +237,13 @@ export default function Portfolio() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative z-10 w-full max-w-2xl rounded-3xl border border-neon-green/20 bg-[#0a0a0a] p-6 md:p-10 shadow-2xl overflow-hidden"
+              className="relative z-10 w-full max-w-2xl rounded-3xl border border-neon-green/20 bg-white p-6 md:p-10 shadow-2xl overflow-hidden"
               id="spec-modal-panel"
             >
               {/* Closing Trigger */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 rounded-full border border-white/10 bg-white/5 p-2 text-gray-400 hover:border-neon-green/40 hover:text-white transition-all"
+                className="absolute top-6 right-6 rounded-full border border-gray-200 bg-gray-100 p-2 text-gray-600 hover:border-neon-green/40 hover:text-gray-900 transition-all"
                 id="btn-close-spec-modal"
               >
                 <X className="h-5 w-5" />
@@ -243,11 +253,11 @@ export default function Portfolio() {
                 {selectedProject.category}
               </span>
               
-              <h3 className="font-sans text-2xl font-bold tracking-tight text-white mb-4 pr-12 md:text-3xl">
+              <h3 className="font-sans text-2xl font-bold tracking-tight text-gray-900 mb-4 pr-12 md:text-3xl">
                 {selectedProject.title}
               </h3>
 
-              <div className="mb-6 rounded-2xl overflow-hidden border border-white/5 aspect-video bg-black relative group">
+              <div className="mb-6 rounded-2xl overflow-hidden border border-gray-200 aspect-video bg-black relative group">
                 <img
                   src={selectedProject.imageSrc}
                   alt={selectedProject.title}
@@ -259,9 +269,9 @@ export default function Portfolio() {
                     href={selectedProject.projectLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    className="absolute inset-0 bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
                   >
-                    <span className="flex items-center gap-2 rounded-xl bg-neon-green px-5 py-3 text-xs font-bold text-black shadow-lg">
+                    <span className="flex items-center gap-2 rounded-xl bg-neon-green px-5 py-3 text-xs font-bold text-white shadow-lg">
                       <Globe className="h-4 w-4" />
                       Visitar Sistema no Ar
                       <ExternalLink className="h-3.5 w-3.5" />
@@ -277,7 +287,7 @@ export default function Portfolio() {
                   </h4>
                   <div className="space-y-3">
                     {selectedProject.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-3 text-sm text-gray-300 leading-relaxed">
+                      <div key={i} className="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neon-green/10 text-neon-green font-mono text-[10px] font-bold mt-0.5">
                           ✓
                         </span>
@@ -287,7 +297,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div className="flex items-center gap-2 text-xs text-gray-500 font-mono">
                     <span className="h-1.5 w-1.5 rounded-full bg-neon-green" />
                     <span>ENTREGA COMPLETA E EXCLUSIVA</span>
@@ -298,7 +308,7 @@ export default function Portfolio() {
                         href={selectedProject.projectLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl border border-white/10 px-4 py-2.5 text-xs font-bold text-white hover:bg-white/5 transition-all"
+                        className="w-full sm:w-auto flex items-center justify-center gap-1.5 rounded-xl border border-black bg-white px-4 py-2.5 text-xs font-bold text-black hover:bg-gray-50 transition-all"
                       >
                         <ExternalLink className="h-3.5 w-3.5" />
                         Acessar Demo
@@ -313,7 +323,7 @@ export default function Portfolio() {
                           contactEl.scrollIntoView({ behavior: "smooth" });
                         }
                       }}
-                      className="w-full sm:w-auto rounded-xl bg-neon-green px-5 py-2.5 text-xs font-bold text-black hover:bg-white transition-all duration-300"
+                      className="w-full sm:w-auto rounded-xl bg-neon-green px-5 py-2.5 text-xs font-bold text-white hover:bg-white transition-all btn-premium duration-300"
                       id="btn-spec-interest"
                     >
                       Quero algo similar

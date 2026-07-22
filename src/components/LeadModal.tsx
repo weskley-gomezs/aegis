@@ -102,17 +102,42 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
     window.open(`https://wa.me/5561996507712?text=${encodedMessage}`, "_blank");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.mainPainPoints.length === 0) {
       alert("Por favor, selecione pelo menos um desafio para o diagnóstico.");
       return;
     }
     setLoading(true);
-    setTimeout(() => {
+
+    try {
+      await fetch("https://formsubmit.co/ajax/weskleygomez@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `Novo Lead Aegis Tech: ${formData.companyName}`,
+          Nome: formData.name,
+          Email: formData.email,
+          WhatsApp: formData.whatsapp,
+          Empresa: formData.companyName,
+          Cargo: formData.role,
+          Tamanho: formData.companySize,
+          Desafios: formData.mainPainPoints.map(id => {
+            return painPoints.find(p => p.id === id)?.label || id;
+          }).join(', '),
+          Detalhes: formData.additionalInfo || "Nenhum detalhe adicional"
+        }),
+      });
       setLoading(false);
       setStep(3);
-    }, 1800);
+    } catch (error) {
+      console.error("Erro ao enviar email:", error);
+      alert("Ocorreu um erro ao enviar a solicitação. Por favor, tente novamente ou entre em contato pelo WhatsApp.");
+      setLoading(false);
+    }
   };
 
   const resetForm = () => {
@@ -155,7 +180,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl border border-neon-green/20 bg-[#0a0a0a]/95 p-6 md:p-10 shadow-[0_0_50px_rgba(198,255,56,0.1)] backdrop-blur-xl"
+            className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl border border-neon-green/20 bg-white/95 p-6 md:p-10 shadow-[0_0_50px_rgba(198,255,56,0.1)] backdrop-blur-xl"
             id="modal-content"
           >
             {/* Background glowing line */}
@@ -164,7 +189,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
             {/* Close Button */}
             <button
               onClick={resetForm}
-              className="absolute top-6 right-6 rounded-full border border-white/10 bg-white/5 p-2 text-gray-400 hover:border-neon-green/40 hover:text-white transition-all duration-300"
+              className="absolute top-6 right-6 rounded-full border border-gray-200 bg-gray-100 p-2 text-gray-600 hover:border-neon-green/40 hover:text-gray-900 transition-all duration-300"
               id="close-modal-btn"
             >
               <X className="h-5 w-5" />
@@ -173,7 +198,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
             {step < 3 && (
               <div className="mb-6 flex items-center gap-2">
                 <span className="font-mono text-xs text-neon-green uppercase tracking-widest">Passo {step} de 2</span>
-                <div className="h-[2px] flex-1 bg-white/10">
+                <div className="h-[2px] flex-1 bg-gray-200">
                   <div 
                     className="h-full bg-neon-green transition-all duration-300" 
                     style={{ width: `${(step / 2) * 100}%` }}
@@ -186,10 +211,10 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
             {step === 1 && (
               <div>
                 <div className="mb-8">
-                  <h3 className="font-sans text-2xl font-bold tracking-tight text-white md:text-3xl">
-                    Solicitar <span className="font-serif italic text-neon-green">Diagnóstico Gratuito</span>
+                  <h3 className="font-sans text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
+                    Solicitar <span className="font-serif italic text-neon-green">Orçamento Gratuito</span>
                   </h3>
-                  <p className="mt-2 text-sm text-gray-400">
+                  <p className="mt-2 text-sm text-gray-600">
                     Preencha os dados abaixo. Analisaremos o ecossistema digital da sua empresa para identificar gargalos operacionais e oportunidades de escala comercial.
                   </p>
                 </div>
@@ -197,7 +222,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Seu Nome *</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Seu Nome *</label>
                       <input
                         type="text"
                         name="name"
@@ -205,12 +230,12 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Ex: Roberto Alencar"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                        className="w-full rounded-xl border border-gray-200 bg-gray-100 px-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                         id="input-lead-name"
                       />
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Seu Whatsapp *</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Seu Whatsapp *</label>
                       <input
                         type="tel"
                         name="whatsapp"
@@ -218,7 +243,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                         value={formData.whatsapp}
                         onChange={handleInputChange}
                         placeholder="Ex: (11) 99999-9999"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                        className="w-full rounded-xl border border-gray-200 bg-gray-100 px-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                         id="input-lead-whatsapp"
                       />
                     </div>
@@ -226,24 +251,24 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">E-mail Corporativo</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">E-mail Corporativo</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="Ex: roberto@empresa.com.br"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                        className="w-full rounded-xl border border-gray-200 bg-gray-100 px-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                         id="input-lead-email"
                       />
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Seu Cargo / Função</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Seu Cargo / Função</label>
                       <select
                         name="role"
                         value={formData.role}
                         onChange={handleInputChange}
-                        className="w-full rounded-xl border border-white/10 bg-[#0e0e0e] px-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                        className="w-full rounded-xl border border-gray-200 bg-gray-100 px-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                         id="select-lead-role"
                       >
                         {roles.map(r => (
@@ -255,7 +280,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
 
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Nome da Empresa *</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Nome da Empresa *</label>
                       <div className="relative">
                         <input
                           type="text"
@@ -264,20 +289,20 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                           value={formData.companyName}
                           onChange={handleInputChange}
                           placeholder="Ex: Vanguard Logística"
-                          className="w-full rounded-xl border border-white/10 bg-white/5 pl-10 pr-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-100 pl-10 pr-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                           id="input-lead-company"
                         />
                         <Building className="absolute top-3.5 left-3.5 h-4 w-4 text-gray-500" />
                       </div>
                     </div>
                     <div>
-                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Nº de Colaboradores</label>
+                      <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Nº de Colaboradores</label>
                       <div className="relative">
                         <select
                           name="companySize"
                           value={formData.companySize}
                           onChange={handleInputChange}
-                          className="w-full rounded-xl border border-white/10 bg-[#0e0e0e] pl-10 pr-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300"
+                          className="w-full rounded-xl border border-gray-200 bg-gray-100 pl-10 pr-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300"
                           id="select-lead-size"
                         >
                           {sizeOptions.map(opt => (
@@ -293,7 +318,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                 <div className="mt-8 flex justify-end">
                   <button
                     onClick={handleNext}
-                    className="group flex items-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-semibold text-black hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300"
+                    className="group flex items-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-semibold text-white hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300"
                     id="btn-lead-step1-next"
                   >
                     Próximo Passo
@@ -307,10 +332,10 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
             {step === 2 && (
               <form onSubmit={handleSubmit}>
                 <div className="mb-6">
-                  <h3 className="font-sans text-2xl font-bold tracking-tight text-white md:text-3xl">
+                  <h3 className="font-sans text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
                     Quais são os principais <span className="font-serif italic text-neon-green">desafios</span> atuais?
                   </h3>
-                  <p className="mt-2 text-sm text-gray-400">
+                  <p className="mt-2 text-sm text-gray-600">
                     Selecione as opções que mais representam os gargalos na sua empresa hoje.
                   </p>
                 </div>
@@ -325,15 +350,15 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                         onClick={() => togglePainPoint(point.id)}
                         className={`flex items-center gap-3 rounded-2xl border p-4 text-left transition-all duration-300 ${
                           selected
-                            ? "border-neon-green bg-neon-green/10 text-white shadow-[0_0_15px_rgba(198,255,56,0.1)]"
-                            : "border-white/10 bg-white/5 text-gray-300 hover:border-white/20"
+                            ? "border-neon-green bg-neon-green/10 text-gray-900 shadow-[0_0_15px_rgba(198,255,56,0.1)]"
+                            : "border-gray-200 bg-gray-100 text-gray-700 hover:border-gray-300"
                         }`}
                         id={`btn-challenge-${point.id}`}
                       >
                         <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border text-black transition-all ${
                           selected 
                             ? "border-neon-green bg-neon-green" 
-                            : "border-white/30 bg-transparent"
+                            : "border-gray-300 bg-transparent"
                         }`}>
                           {selected && <Check className="h-3.5 w-3.5 stroke-[3]" />}
                         </div>
@@ -344,14 +369,14 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                 </div>
 
                 <div className="mt-4">
-                  <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-400">Quer detalhar algo a mais? (Opcional)</label>
+                  <label className="mb-1.5 block font-mono text-xs uppercase tracking-wider text-gray-600">Quer detalhar algo a mais? (Opcional)</label>
                   <textarea
                     name="additionalInfo"
                     value={formData.additionalInfo}
                     onChange={handleInputChange}
                     placeholder="Sistemas legados em uso, integrações desejadas, canais de captação..."
                     rows={3}
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-neon-green/50 focus:outline-none transition-all duration-300 resize-none"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-100 px-4 py-3 text-sm text-gray-900 focus:border-neon-green/50 focus:outline-none transition-all duration-300 resize-none"
                     id="textarea-lead-extra"
                   />
                 </div>
@@ -360,7 +385,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="rounded-xl border border-white/10 px-5 py-3 text-sm font-semibold text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-300"
+                    className="rounded-xl border border-black bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-gray-50 transition-all duration-300"
                     id="btn-lead-step2-back"
                   >
                     Voltar
@@ -369,7 +394,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                   <button
                     type="submit"
                     disabled={loading}
-                    className="group flex items-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-semibold text-black hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300 disabled:opacity-50"
+                    className="group flex items-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-semibold text-white hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300 disabled:opacity-50"
                     id="btn-lead-step2-submit"
                   >
                     {loading ? (
@@ -399,43 +424,14 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                   <Check className="h-8 w-8 stroke-[3]" />
                 </div>
 
-                <h3 className="font-sans text-3xl font-bold tracking-tight text-white">
+                <h3 className="font-sans text-3xl font-bold tracking-tight text-gray-900">
                   Diagnóstico <span className="font-serif italic text-neon-green">Iniciado!</span>
                 </h3>
-                <p className="mx-auto mt-3 max-w-lg text-sm text-gray-400">
+                <p className="mx-auto mt-3 max-w-lg text-sm text-gray-600">
                   Olá <strong>{formData.name}</strong>, obrigado por confiar na nossa tecnologia para a <strong>{formData.companyName}</strong>. Sua solicitação foi recebida com sucesso por <strong>Weskley Gomez</strong> e nossa equipe técnica de elite já começou a mapear o seu ecossistema.
                 </p>
 
-                {/* Simulated ROI Board - Extremely premium authority booster */}
-                <div className="mt-8 rounded-2xl border border-neon-green/10 bg-white/[0.02] p-6 text-left">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Sparkles className="h-4 w-4 text-neon-green" />
-                    <span className="font-mono text-xs uppercase tracking-widest text-neon-green font-bold font-sans">Projeção Inicial Aegis Tech</span>
-                  </div>
 
-                  <p className="text-xs text-gray-400 leading-relaxed mb-6">
-                    Com base no porte de <strong>{stats.label}</strong> e nos desafios mapeados por você, estimamos as seguintes otimizações preliminares após a implantação da nossa arquitetura premium:
-                  </p>
-
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div className="rounded-xl border border-white/5 bg-black/40 p-4">
-                      <span className="block font-mono text-xs uppercase text-gray-500">Eficiência Operacional</span>
-                      <span className="mt-1 block font-mono text-2xl font-bold text-neon-green">+{estimatedHoursSaved}h</span>
-                      <span className="mt-0.5 block text-xs text-gray-400">De trabalho manual economizado por mês na sua equipe e rotinas</span>
-                    </div>
-
-                    <div className="rounded-xl border border-white/5 bg-black/40 p-4">
-                      <span className="block font-mono text-xs uppercase text-gray-500">Recuperação e Receita</span>
-                      <span className="mt-1 block font-mono text-2xl font-bold text-white">R$ {(estimatedSavings / 1000).toFixed(0)}k</span>
-                      <span className="mt-0.5 block text-xs text-gray-400">Em receita potencial recuperada com automações e faturamento inteligente</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-5 flex items-start gap-2.5 rounded-lg bg-neon-green/5 p-3 text-xs text-neon-green border border-neon-green/10">
-                    <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" />
-                    <span>Estes números representam médias coletadas em implantações reais. Apresentaremos o plano de engenharia completo e personalizado em nossa chamada de diagnóstico.</span>
-                  </div>
-                </div>
 
                 <p className="mt-6 text-xs text-gray-500">
                   Clique no botão abaixo para iniciar o atendimento imediato via WhatsApp ou aguarde nosso contato no número <strong>{formData.whatsapp}</strong>.
@@ -444,7 +440,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                   <button
                     onClick={handleWhatsAppRedirect}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-bold text-black hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300"
+                    className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-neon-green px-6 py-3.5 text-sm font-bold text-white hover:bg-white hover:shadow-[0_0_20px_rgba(198,255,56,0.3)] transition-all duration-300"
                     id="btn-whatsapp-direct"
                   >
                     Falar com Weskley no WhatsApp
@@ -452,7 +448,7 @@ ${formData.additionalInfo || "Nenhum adicional informado"}`;
                   </button>
                   <button
                     onClick={resetForm}
-                    className="w-full sm:w-auto rounded-xl border border-white/10 px-6 py-3 text-sm font-semibold text-gray-400 hover:bg-white/5 hover:text-white transition-all duration-300"
+                    className="w-full sm:w-auto rounded-xl border border-black bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-gray-50 transition-all duration-300"
                     id="btn-close-lead-success"
                   >
                     Voltar ao Site

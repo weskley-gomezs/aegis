@@ -14,18 +14,18 @@ interface CTAProps {
 export default function CTA({ onOpenDiagnosis }: CTAProps) {
   return (
     <section 
-      className="relative py-20 bg-[#050505] overflow-hidden" 
+      className="relative py-20 bg-white overflow-hidden" 
       id="cta"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
         
         {/* Glowing Wide Container */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 , filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0 , filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[40px] border border-neon-green/30 bg-[#070707] px-8 py-16 md:p-16 text-center overflow-hidden shadow-[0_0_50px_rgba(198,255,56,0.15)] grid-bg"
+          className="relative rounded-[40px] border border-neon-green/30 bg-gray-50 px-8 py-16 md:p-16 text-center overflow-hidden shadow-[0_0_50px_rgba(198,255,56,0.15)] grid-bg"
           id="cta-glow-panel"
         >
           {/* Radial blur specifically positioned in center for high impact glow behind text */}
@@ -46,29 +46,37 @@ export default function CTA({ onOpenDiagnosis }: CTAProps) {
             </div>
 
             {/* Title */}
-            <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+            <h2 className="font-sans text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
               Sua empresa merece uma tecnologia à altura da <span className="font-serif italic text-neon-green font-light">grandeza do seu negócio.</span>
             </h2>
 
             {/* Description Paragraph */}
-            <p className="text-base text-gray-300 max-w-2xl mx-auto leading-relaxed md:text-lg">
+            <p className="text-base text-gray-700 max-w-2xl mx-auto leading-relaxed md:text-lg">
               Enquanto muitas marcas ainda trabalham com processos manuais, planilhas lentas e equipes sobrecarregadas, nossos clientes utilizam tecnologia integrada de elite para ganhar produtividade, profissionalismo de mercado e acelerar seus resultados de captação e faturamento.
             </p>
 
             {/* Huge CTA Button */}
             <div className="pt-4 flex justify-center">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                animate={{
+                  boxShadow: ["0px 0px 15px rgba(198, 255, 56, 0.4)", "0px 0px 40px rgba(198, 255, 56, 0.8)", "0px 0px 15px rgba(198, 255, 56, 0.4)"]
+                }}
+                transition={{
+                  boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                }}
                 onClick={onOpenDiagnosis}
-                className="group relative flex items-center gap-3.5 rounded-full bg-neon-green px-10 py-5 text-sm md:text-base font-bold text-black shadow-[0_0_30px_rgba(198,255,56,0.4)] hover:bg-white hover:shadow-[0_0_40px_rgba(198,255,56,0.6)] transition-all duration-300"
+                className="group relative flex items-center gap-3.5 rounded-full bg-neon-green px-10 py-5 text-sm md:text-base font-bold text-black hover:bg-white transition-colors duration-300"
                 id="btn-cta-huge-diagnostic"
               >
-                Solicitar Diagnóstico Gratuito
+                Solicitar Orçamento
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </motion.button>
             </div>
 
             {/* Sub-label under button */}
-            <div className="pt-4 flex items-center justify-center gap-4 text-[10px] text-gray-500 font-mono uppercase tracking-widest">
+            <div className="pt-4 flex items-center justify-center gap-4 text-[10px] text-gray-600 font-mono uppercase tracking-widest">
               <span>✓ SEM COMPROMISSO</span>
               <span className="h-1 w-1 rounded-full bg-gray-500" />
               <span>✓ ANÁLISE COMPLETA EM ATÉ 48H</span>

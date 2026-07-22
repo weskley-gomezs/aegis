@@ -23,6 +23,8 @@ import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import LeadModal from "./components/LeadModal";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import LiveBackground from "./components/LiveBackground";
+import CustomCursor from "./components/CustomCursor";
 import { Sparkles, ArrowUp } from "lucide-react";
 
 export default function App() {
@@ -54,10 +56,13 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white selection:bg-neon-green selection:text-black">
+    <div className="relative min-h-screen bg-white text-gray-900 selection:bg-neon-green selection:text-black">
       
+      <CustomCursor />
+      <LiveBackground />
+
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-white/5">
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-gray-200">
         <div 
           className="h-full bg-neon-green shadow-[0_0_10px_#C6FF38] transition-all duration-100"
           style={{ width: `${scrollProgress}%` }}
@@ -121,7 +126,7 @@ export default function App() {
       {showScrollTop && (
         <button
           onClick={handleScrollToTop}
-          className="fixed bottom-24 right-9.5 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#0a0a0ab0] text-gray-400 backdrop-blur-md hover:border-neon-green/40 hover:text-neon-green shadow-xl transition-all duration-300"
+          className="fixed bottom-24 right-9.5 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 backdrop-blur-md hover:border-neon-green/40 hover:text-neon-green shadow-xl transition-all duration-300"
           id="scroll-to-top-btn"
           aria-label="Scroll to top"
         >

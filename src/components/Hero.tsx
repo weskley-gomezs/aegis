@@ -30,15 +30,15 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
 
   return (
     <section 
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-16 grid-bg"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-28 pb-16 grid-bg bg-white"
       id="hero"
     >
       {/* Background glow radial */}
       <div className="absolute inset-0 glow-radial-green pointer-events-none" />
 
       {/* Futuristic absolute decorative glowing circles */}
-      <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-neon-green/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 h-80 w-80 rounded-full bg-neon-green/3 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-neon-green/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 h-80 w-80 rounded-full bg-neon-green/5 blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-12">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
@@ -48,76 +48,76 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
             
             {/* Upper Premium Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 15 , filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full border border-neon-green/20 bg-neon-green/5 px-4 py-1.5 backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 backdrop-blur-md"
               id="hero-badge"
             >
               <Sparkles className="h-3.5 w-3.5 text-neon-green animate-pulse" />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-neon-green">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-700">
                 Arquitetura Digital de Elite para Empresas
               </span>
             </motion.div>
 
             {/* Giant Title */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-none"
+              className="font-sans text-4xl font-extrabold tracking-tight text-black sm:text-5xl md:text-6xl lg:text-7xl leading-none"
               id="hero-title"
             >
               Tecnologia que <br className="hidden sm:inline" />
               faz seu negócio <br />
               <span className="font-serif font-light italic text-neon-green relative">
-                escala.
+                escalar.
                 {/* Underline decorative glow path */}
-                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-neon-green/30 blur-[1px]" />
+                <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-neon-green/50 blur-[1px]" />
               </span>
             </motion.h1>
 
             {/* Subtexts */}
             <div className="space-y-4 max-w-2xl">
               <motion.h2
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 15 , filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-sans text-lg font-medium text-gray-200 md:text-xl"
+                className="font-sans text-lg font-medium text-gray-700 md:text-xl"
               >
-                Sites Premium, Sistemas Personalizados e Automações desenvolvidos sob medida para o Amplo Mercado Corporativo.
+                Sites Profissionais, Sistemas Personalizados e Digitalização de Processos desenvolvidos sob medida.
               </motion.h2>
 
               <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 15 , filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-base text-gray-400 leading-relaxed"
+                className="text-base text-gray-600 leading-relaxed"
               >
-                Transformamos processos operacionais lentos em plataformas digitais de alta performance que geram receita, integram equipes, automatizam tarefas repetitivas e profissionalizam a gestão da sua empresa.
+                Transformamos fluxos operacionais complexos em plataformas digitais de alta performance que integram equipes, automatizam processos empresariais e organizam a gestão da sua empresa, sem mensalidades abusivas.
               </motion.p>
             </div>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 15 , filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4"
               id="hero-buttons-container"
             >
               <button
                 onClick={onOpenDiagnosis}
-                className="group relative flex items-center justify-center gap-2.5 rounded-full bg-neon-green px-8 py-4.5 text-sm font-bold text-black shadow-[0_0_25px_rgba(198,255,56,0.3)] hover:bg-white hover:shadow-[0_0_35px_rgba(198,255,56,0.5)] transition-all duration-300"
+                className="group relative flex items-center justify-center gap-2.5 rounded-full bg-neon-green px-8 py-4.5 text-sm font-bold text-white shadow-sm hover:opacity-90 transition-all duration-300"
                 id="hero-cta-main"
               >
-                Solicitar Diagnóstico
+                Solicitar Orçamento
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
 
               <button
                 onClick={handleScrollToPortfolio}
-                className="group flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4.5 text-sm font-bold text-white hover:border-white/30 hover:bg-white/10 transition-all duration-300"
+                className="group flex items-center justify-center gap-2 rounded-full border border-black bg-white px-8 py-4.5 text-sm font-bold text-black hover:bg-gray-50 transition-all duration-300"
                 id="hero-cta-secondary"
               >
                 Ver Portfólio
@@ -129,7 +129,7 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-white/5 pt-8 text-xs text-gray-500 font-mono"
+              className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-gray-200 pt-8 text-xs text-gray-500 font-mono"
             >
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-neon-green" />
@@ -156,56 +156,70 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
 
               {/* Main card */}
               <div 
-                className="glass-premium rounded-[32px] p-6 md:p-8 relative overflow-hidden"
+                className="glass-premium rounded-[32px] p-6 md:p-8 relative overflow-hidden border border-gray-200"
                 id="hero-interactive-dashboard"
               >
                 {/* Tech style grid/dots inside card */}
-                <div className="absolute right-4 top-4 font-mono text-[9px] text-gray-600 tracking-wider">
+                <div className="absolute right-4 top-4 font-mono text-[9px] text-gray-400 tracking-wider">
                   SYSTEM STATE: ACTIVE // AE-CORE.v1
                 </div>
 
                 {/* Dashboard top window controls */}
                 <div className="flex items-center gap-1.5 mb-8">
-                  <span className="h-2 w-2 rounded-full bg-red-500/60" />
-                  <span className="h-2 w-2 rounded-full bg-yellow-500/60" />
-                  <span className="h-2 w-2 rounded-full bg-neon-green/60" />
+                  <span className="h-2 w-2 rounded-full bg-red-400" />
+                  <span className="h-2 w-2 rounded-full bg-yellow-400" />
+                  <span className="h-2 w-2 rounded-full bg-neon-green" />
                 </div>
 
                 <div className="space-y-4">
                   {/* Scenario Toggle Buttons */}
-                  <div className="flex rounded-xl bg-white/5 p-1 border border-white/10" id="scenario-toggle-container">
+                  <div className="relative flex rounded-xl bg-gray-50 p-1 border border-gray-200 isolate" id="scenario-toggle-container">
                     <button
                       onClick={() => setIsAfter(false)}
-                      className={`flex-1 rounded-lg py-2.5 text-xs font-mono font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                      className={`relative flex-1 rounded-lg py-2.5 text-xs font-mono font-bold tracking-wider transition-colors duration-300 flex items-center justify-center gap-1.5 z-10 ${
                         !isAfter 
-                          ? "bg-red-500/20 text-red-400 border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.15)]" 
-                          : "text-gray-400 hover:text-white"
+                          ? "text-gray-900" 
+                          : "text-gray-400 hover:text-gray-700"
                       }`}
                       id="btn-scenario-before"
                     >
                       <TrendingDown className="h-3.5 w-3.5" />
                       Antes da AEGIS
+                      {!isAfter && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute inset-0 bg-white rounded-lg border border-gray-200 shadow-sm -z-10"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
                     </button>
                     <button
                       onClick={() => setIsAfter(true)}
-                      className={`flex-1 rounded-lg py-2.5 text-xs font-mono font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                      className={`relative flex-1 rounded-lg py-2.5 text-xs font-mono font-bold tracking-wider transition-colors duration-300 flex items-center justify-center gap-1.5 z-10 ${
                         isAfter 
-                          ? "bg-neon-green/20 text-neon-green border border-neon-green/30 shadow-[0_0_20px_rgba(198,255,56,0.25)]" 
-                          : "text-gray-400 hover:text-white"
+                          ? "text-neon-green" 
+                          : "text-gray-400 hover:text-gray-700"
                       }`}
                       id="btn-scenario-after"
                     >
-                      <TrendingUp className="h-3.5 w-3.5 animate-bounce" />
+                      <TrendingUp className="h-3.5 w-3.5 text-neon-green" />
                       Depois da AEGIS
+                      {isAfter && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute inset-0 bg-white rounded-lg border border-gray-200 shadow-sm -z-10"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
                     </button>
                   </div>
 
                   {/* Interactive Chart Container */}
-                  <div className="relative rounded-2xl border border-white/5 bg-black/40 p-4 overflow-hidden" id="interactive-chart-box">
+                  <div className="relative rounded-2xl border border-gray-100 bg-white p-4 overflow-hidden shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]" id="interactive-chart-box">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Resultado Real do Seu Negócio</span>
-                      <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full ${isAfter ? "bg-neon-green/10 text-neon-green" : "bg-red-500/10 text-red-400"}`}>
-                        {isAfter ? "ESCALANDO // EFICIÊNCIA MÁXIMA" : "ESTAGNADO // CAOS OPERACIONAL"}
+                      <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">Resultado Real do Seu Negócio</span>
+                      <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded-full ${isAfter ? "bg-neon-green/20 text-neon-green" : "bg-red-50 text-red-500"}`}>
+                        {isAfter ? "ESCALANDO // EFICIÊNCIA" : "ESTAGNADO // DESORGANIZADO"}
                       </span>
                     </div>
 
@@ -226,7 +240,7 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
                         </defs>
 
                         {/* Coordinate Grid Lines */}
-                        <g stroke="rgba(255,255,255,0.03)" strokeWidth="1">
+                        <g stroke="rgba(0,0,0,0.05)" strokeWidth="1">
                           <line x1="40" y1="30" x2="380" y2="30" />
                           <line x1="40" y1="75" x2="380" y2="75" />
                           <line x1="40" y1="120" x2="380" y2="120" />
@@ -238,8 +252,8 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
                         </g>
 
                         {/* Axes */}
-                        <line x1="40" y1="20" x2="40" y2="175" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-                        <line x1="30" y1="165" x2="390" y2="165" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+                        <line x1="40" y1="20" x2="40" y2="175" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
+                        <line x1="30" y1="165" x2="390" y2="165" stroke="rgba(0,0,0,0.1)" strokeWidth="1" />
 
                         {/* Axes Labels */}
                         <text x="15" y="25" fill="#6b7280" fontSize="8" fontFamily="monospace" transform="rotate(-90 15 25)" textAnchor="end">RESULTADOS</text>
@@ -327,46 +341,46 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
                   {/* Impact Explainer Box */}
                   <div className={`rounded-2xl p-4 border transition-all duration-500 ${
                     isAfter 
-                      ? "border-neon-green/20 bg-neon-green/5 shadow-[inset_0_0_15px_rgba(198,255,56,0.05)]" 
-                      : "border-red-500/10 bg-red-500/5 shadow-[inset_0_0_15px_rgba(239,68,68,0.02)]"
+                      ? "border-neon-green/40 bg-neon-green/5" 
+                      : "border-gray-200 bg-gray-50"
                   }`} id="impact-explainer-box">
                     {isAfter ? (
                       <div className="space-y-2.5">
                         <div className="flex items-center gap-2 text-neon-green">
                           <CheckCircle2 className="h-4 w-4 shrink-0" />
-                          <span className="font-mono text-xs font-bold uppercase tracking-wider">Cenário com AEGIS: Sucesso Integrado</span>
+                          <span className="font-mono text-xs font-bold uppercase tracking-wider">Cenário com AEGIS: Gestão Integrada</span>
                         </div>
-                        <p className="text-xs text-gray-300 leading-relaxed">
-                          Sua operação roda em piloto automático. Leads do WhatsApp e Instagram são filtrados e atendidos instantaneamente. Contratos são assinados em minutos de forma digital e o faturamento é gerado de forma recorrente sem esforço humano.
+                        <p className="text-xs text-gray-700 leading-relaxed">
+                          Os processos da sua empresa são centralizados e organizados. A gestão de operações ganha produtividade, a comunicação entre setores é simplificada e a equipe atinge máxima eficiência com menos esforço.
                         </p>
-                        <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-[9px] text-neon-green">
-                          <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded border border-white/5">
-                            <span>● LEADS CAPTADOS:</span>
+                        <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-[9px] text-gray-800">
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200 shadow-sm">
+                            <span className="text-gray-500">● PRODUTIVIDADE:</span>
                             <span className="font-bold">+124%</span>
                           </div>
-                          <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded border border-white/5">
-                            <span>● TEMPO ECONOMIZADO:</span>
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200 shadow-sm">
+                            <span className="text-gray-500">● TEMPO LIVRE:</span>
                             <span className="font-bold">42h/mês</span>
                           </div>
                         </div>
                       </div>
                     ) : (
                       <div className="space-y-2.5">
-                        <div className="flex items-center gap-2 text-red-400">
+                        <div className="flex items-center gap-2 text-gray-600">
                           <AlertTriangle className="h-4 w-4 shrink-0" />
-                          <span className="font-mono text-xs font-bold uppercase tracking-wider">Cenário Sem AEGIS: Caos e Perda</span>
+                          <span className="font-mono text-xs font-bold uppercase tracking-wider">Cenário Sem AEGIS: Processos Manuais</span>
                         </div>
-                        <p className="text-xs text-gray-400 leading-relaxed">
-                          Sua equipe gasta horas em planilhas dispersas e redigitando dados. O atendimento de potenciais clientes no WhatsApp é demorado, fazendo você perder vendas. Cobranças financeiras manuais consomem tempo e elevam a inadimplência.
+                        <p className="text-xs text-gray-600 leading-relaxed">
+                          Sua equipe gasta horas em planilhas dispersas, sistemas que não conversam entre si e redigitando dados. Processos operacionais são demorados e a falta de integração causa ruídos e perda de informações.
                         </p>
-                        <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-[9px] text-red-400">
-                          <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded border border-white/5">
-                            <span>● LEADS PERDIDOS:</span>
+                        <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-[9px] text-gray-700">
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200">
+                            <span className="text-gray-500">● INTEGRAÇÃO:</span>
                             <span className="font-bold">FALHA</span>
                           </div>
-                          <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded border border-white/5">
-                            <span>● TRABALHO MANUAL:</span>
-                            <span className="font-bold">EXCESSO</span>
+                          <div className="flex items-center gap-1 bg-white px-2 py-1 rounded border border-gray-200">
+                            <span className="text-gray-500">● RETRABALHO:</span>
+                            <span className="font-bold">ALTO</span>
                           </div>
                         </div>
                       </div>
@@ -375,7 +389,7 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
                 </div>
 
                 {/* Aesthetic footer detail inside the card */}
-                <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4 text-[10px] text-gray-500 font-mono">
+                <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-4 text-[10px] text-gray-400 font-mono">
                   <span>AEGIS SUITE v3.5</span>
                   <span>ENCRYPTED SECURE SSL</span>
                 </div>
@@ -385,19 +399,19 @@ export default function Hero({ onOpenDiagnosis }: HeroProps) {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-white/10 bg-[#0c0c0cb0] px-4 py-2.5 backdrop-blur-md shadow-2xl"
+                className="absolute -top-6 -right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-2.5 shadow-lg"
               >
                 <div className="h-2 w-2 rounded-full bg-neon-green animate-ping" />
-                <span className="font-mono text-[10px] text-white">48h PROTÓTIPO INICIAL</span>
+                <span className="font-mono text-[10px] text-gray-800 font-medium">SOB MEDIDA</span>
               </motion.div>
 
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-2 rounded-2xl border border-white/10 bg-[#0c0c0cb0] px-4 py-2.5 backdrop-blur-md shadow-2xl"
+                className="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-2.5 shadow-lg"
               >
                 <span className="text-neon-green font-bold">100%</span>
-                <span className="font-mono text-[10px] text-gray-400">PERSONALIZADO</span>
+                <span className="font-mono text-[10px] text-gray-600 font-medium">PERSONALIZADO</span>
               </motion.div>
             </motion.div>
           </div>

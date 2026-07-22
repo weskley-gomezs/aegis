@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useTransform, animate } from "motion/react";
 import { Sparkles, ArrowRight, Layers, ShieldCheck, HeartHandshake } from "lucide-react";
 import { Metric } from "../types";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function Metrics() {
   const metrics: Metric[] = [
@@ -38,7 +39,7 @@ export default function Metrics() {
 
   return (
     <section 
-      className="relative py-20 bg-[#050505] overflow-hidden border-t border-white/5" 
+      className="relative py-20 bg-white overflow-hidden border-t border-gray-200" 
       id="metrics"
     >
       {/* Background neon dots or grids */}
@@ -55,7 +56,7 @@ export default function Metrics() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-3xl border border-white/5 bg-[#000000]/40 p-8 hover:border-neon-green/30 hover:bg-white/[0.01] transition-all duration-300 shadow-xl overflow-hidden cursor-default"
+              className="group relative rounded-3xl border border-gray-200 bg-gray-50 p-8 card-premium hover:border-neon-green/30 hover:bg-white transition-all btn-premium duration-300 shadow-xl overflow-hidden cursor-default"
               id={`metric-box-${metric.id}`}
             >
               {/* Highlight green glow inside card */}
@@ -68,19 +69,19 @@ export default function Metrics() {
                   </span>
                   
                   {/* Big Number Accent */}
-                  <div className="mt-4 font-sans text-5xl md:text-6xl font-extrabold text-white tracking-tight group-hover:text-neon-green transition-colors">
-                    {metric.value}
+                  <div className="mt-4 font-sans text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight group-hover:text-neon-green transition-colors">
+                    <AnimatedCounter value={metric.value} />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="font-sans text-sm font-semibold text-white">
+                  <h4 className="font-sans text-sm font-semibold text-gray-900">
                     {metric.id === "personalizado" && "Projetos Personalizados"}
                     {metric.id === "prototipo" && "Protótipo Inicial"}
                     {metric.id === "suporte" && "Suporte Assistido"}
                     {metric.id === "integracao" && "Possibilidades Integradas"}
                   </h4>
-                  <p className="text-xs text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                  <p className="text-xs text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">
                     {metric.description}
                   </p>
                 </div>

@@ -56,23 +56,23 @@ export default function WhyUs() {
 
   const getIcon = (name: string) => {
     switch (name) {
-      case "TrendingUp": return <TrendingUp className="h-6 w-6" />;
-      case "MessageSquare": return <MessageSquare className="h-6 w-6" />;
-      case "Laptop": return <Laptop className="h-6 w-6" />;
-      case "GraduationCap": return <Laptop className="h-6 w-6" />; // Replace with Laptop for more corporate style
-      case "DollarSign": return <DollarSign className="h-6 w-6" />;
-      default: return <Zap className="h-6 w-6" />;
+      case "TrendingUp": return <TrendingUp className="h-6 w-6 icon-interact" />;
+      case "MessageSquare": return <MessageSquare className="h-6 w-6 icon-interact" />;
+      case "Laptop": return <Laptop className="h-6 w-6 icon-interact" />;
+      case "GraduationCap": return <Laptop className="h-6 w-6 icon-interact" />; // Replace with Laptop for more corporate style
+      case "DollarSign": return <DollarSign className="h-6 w-6 icon-interact" />;
+      default: return <Zap className="h-6 w-6 icon-interact" />;
     }
   };
 
   return (
     <section 
-      className="relative py-24 bg-[#050505] overflow-hidden" 
+      className="relative py-24 bg-white overflow-hidden" 
       id="why-us"
     >
       {/* Decorative vertical lines representing standard grid lines in high-end designs */}
-      <div className="absolute inset-y-0 left-12 w-[1px] bg-white/[0.02] pointer-events-none hidden xl:block" />
-      <div className="absolute inset-y-0 right-12 w-[1px] bg-white/[0.02] pointer-events-none hidden xl:block" />
+      <div className="absolute inset-y-0 left-12 w-[1px] bg-gray-50 pointer-events-none hidden xl:block" />
+      <div className="absolute inset-y-0 right-12 w-[1px] bg-gray-50 pointer-events-none hidden xl:block" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
         
@@ -81,10 +81,10 @@ export default function WhyUs() {
           <span className="font-mono text-xs uppercase tracking-widest text-neon-green font-bold block mb-4">
             DIFERENCIAIS EXCLUSIVOS
           </span>
-          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl leading-tight">
+          <h2 className="font-sans text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl leading-tight">
             Por que líderes e diretores de empresas escolhem <span className="font-serif italic text-neon-green font-light">nossa tecnologia?</span>
           </h2>
-          <p className="mt-4 text-base text-gray-400">
+          <p className="mt-4 text-base text-gray-600">
             Nós não fazemos apenas programação comercial. Nós projetamos o futuro operacional e comercial da sua empresa, eliminando gargalos de equipe e liberando seu negócio para focar em faturamento e escala.
           </p>
         </div>
@@ -94,11 +94,11 @@ export default function WhyUs() {
           {benefits.map((benefit, idx) => (
             <motion.div
               key={benefit.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 , filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0 , filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative rounded-3xl border border-white/5 bg-white/[0.02] p-8 hover:border-neon-green/30 hover:bg-white/[0.03] transition-all duration-300 shadow-xl overflow-hidden cursor-default"
+              className="group relative rounded-3xl border border-gray-200 bg-gray-50 p-8 card-premium hover:border-neon-green/30 hover:bg-white transition-all btn-premium duration-300 shadow-xl overflow-hidden cursor-default"
               id={`why-card-${benefit.id}`}
             >
               {/* Card top gradient glow, triggers on group-hover */}
@@ -114,24 +114,24 @@ export default function WhyUs() {
                   </span>
 
                   {/* Icon */}
-                  <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 text-white border border-white/5 group-hover:bg-neon-green/10 group-hover:text-neon-green group-hover:border-neon-green/20 transition-all duration-300">
+                  <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-gray-900 border border-gray-200 group-hover:bg-neon-green/10 group-hover:text-neon-green group-hover:border-neon-green/20 transition-all duration-300">
                     {getIcon(benefit.iconName)}
                   </div>
 
                   {/* Title */}
-                  <h3 className="mt-6 font-sans text-lg font-bold text-white tracking-tight">
+                  <h3 className="mt-6 font-sans text-lg font-bold text-gray-900 tracking-tight">
                     {benefit.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
+                  <p className="mt-3 text-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
 
                 {/* Subtle indicator bottom corner */}
                 <div className="mt-4 flex justify-end">
-                  <span className="font-mono text-xs text-white/5 group-hover:text-neon-green/30 transition-colors">
+                  <span className="font-mono text-xs text-gray-900/5 group-hover:text-neon-green/30 transition-colors">
                     0{idx + 1}
                   </span>
                 </div>
